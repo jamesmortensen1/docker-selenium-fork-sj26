@@ -2,8 +2,8 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM seleniarm/base:4.0.0-beta-1-20210215
-LABEL authors=sj26
+FROM bernardobelchior1/base:local-20210318
+LABEL authors=bernardobelchior1
 
 USER root
 
