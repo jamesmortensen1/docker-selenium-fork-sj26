@@ -65,3 +65,18 @@ RUN echo "deb http://http.us.debian.org/debian/ testing non-free contrib main" >
 You can find the available versions [here](https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=chromium) or just remove the version altogether to let the most recent version be installed.
 
 After that, you need to [recreate the images](#recreating-the-images).
+
+## Only Building the Images
+
+If you want to build the images locally, without pushing to any registry, then use the build.sh script in the root of the project directory.
+
+The Standalone folder is the base for all Standalone${browser} images and includes a script that starts the selenium server in standalone mode. 
+The NodeBase folder is the base for all Node${browser} images and includes a script that starts the selenium server in node mode.
+
+Inside build.sh are environment variables which are used to tag the built images. If changing the Selenium version, note that you must also edit the Base/Dockerfile and change which selenium-server version is downloaded via wget.  The Chromium version is set in NodeChromium/Dockerfile.txt.
+
+To build the images, run build.sh from the root directory:
+
+```
+$ sh build.sh
+```
