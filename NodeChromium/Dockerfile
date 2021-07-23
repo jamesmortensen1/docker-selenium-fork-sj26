@@ -2,7 +2,7 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM local-seleniarm/node-base:4.0.0-beta-2-20210622
+FROM local-seleniarm/node-base:4.0.0-beta-2-20210723
 LABEL authors=james
 
 USER root

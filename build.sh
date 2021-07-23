@@ -1,5 +1,6 @@
-BUILD_DATE=20210622
+BUILD_DATE=$(date +'%Y%m%d')
 VERSION=4.0.0-beta-2
+CHROMIUM=91.0.4472.124
 NAMESPACE=local-seleniarm
 AUTHORS=james
 
@@ -10,7 +11,7 @@ cd ../Hub && sh generate.sh $VERSION-$BUILD_DATE $NAMESPACE $AUTHORS \
 
 cd ../NodeBase && sh generate.sh $VERSION-$BUILD_DATE $NAMESPACE $AUTHORS \
    && docker buildx build --platform linux/arm64 -t $NAMESPACE/node-base:$VERSION-$BUILD_DATE .
-
+# && sed 's/chromium=.*/chromium=91.0.4472.124/' Dockerfile > Dockerfile \
 cd ../NodeChromium && sh generate.sh $VERSION-$BUILD_DATE $NAMESPACE $AUTHORS \
    && docker buildx build --platform linux/arm64 -t $NAMESPACE/node-chromium:$VERSION-$BUILD_DATE .
 
@@ -19,3 +20,11 @@ cd ../Standalone && sh generate.sh StandaloneChromium node-chromium $VERSION-$BU
    && docker buildx build --platform linux/arm64 -t $NAMESPACE/standalone-chromium:$VERSION-$BUILD_DATE .
 
 echo "Build node-hub, node-chromium, and standalone-chromium...\n"
+echo "Tagging builds...\n"
+
+docker tag $NAMESPACE/base:$VERSION-$BUILD_DATE $NAMESPACE/base:latest
+docker tag $NAMESPACE/hub:$VERSION-$BUILD_DATE $NAMESPACE/hub:latest
+docker tag $NAMESPACE/node-base:$VERSION-$BUILD_DATE $NAMESPACE/node-base:latest
+docker tag $NAMESPACE/node-chromium:$VERSION-$BUILD_DATE $NAMESPACE/node-chromium:latest
+docker tag $NAMESPACE/standalone-chromium:$VERSION-$BUILD_DATE $NAMESPACE/standalone-chromium:latest
+
