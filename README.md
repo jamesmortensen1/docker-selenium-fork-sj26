@@ -1,3 +1,9 @@
+# ARCHIVED
+
+For the most up to date multi-arch container images, please see [seleniumhq-community/docker-seleniarm](https://github.com/seleniumhq-community/docker-seleniarm).  This repo and information below is kept for historical and reference purposes.
+
+----
+
 # Multi-arch Docker images for the Selenium Grid Server
 
 This is a fork of the [official selenium docker images][official] with
